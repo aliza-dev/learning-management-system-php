@@ -118,4 +118,4 @@ Session Hijacking: Secure session handling ensures unauthorized users cannot acc
 
 Password Security: Industry-standard hashing algorithms (Bcrypt).
 
-<div align="center"> <p>Built with ❤️ for Modern Academia</p> <p> <a href="https://github.com/aliza-dev">GitHub</a> • <a href="https://www.linkedin.com/in/aliza-tariq-dev/">LinkedIn</a> </p> </div>
+<div align="center"> <p>Built with ❤️ for Modern Academia</p> <p> <a href="https://github.com/aliza-dev">GitHub</a> • <a href="https://www.linkedin.com/in/aliza-tariq-dev/">LinkedIn</a> </p> </div> 
