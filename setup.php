@@ -1,0 +1,58 @@
+<?php
+
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "university_db";
+
+
+$conn = new mysqli($servername, $username, $password);
+
+
+if ($conn->connect_error) {
+    die("❌ Connection failed: " . $conn->connect_error);
+}
+
+
+$sql = "CREATE DATABASE IF NOT EXISTS $dbname";
+if ($conn->query($sql) === TRUE) {
+    echo "✅ Database '$dbname' created successfully.<br>";
+} else {
+    echo "❌ Error creating database: " . $conn->error . "<br>";
+}
+
+
+$conn->select_db($dbname);
+
+
+$sql = "CREATE TABLE IF NOT EXISTS students (
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    fullname VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+)";
+if ($conn->query($sql) === TRUE) {
+    echo "✅ Table 'users' created successfully.<br>";
+} else {
+    echo "❌ Error creating table: " . $conn->error . "<br>";
+}
+
+
+$hashed_password = password_hash("admin123", PASSWORD_DEFAULT);
+$sql = "INSERT INTO users (fullname, email, username, password)
+        VALUES ('Admin User', 'admin@institute.edu', 'admin', '$hashed_password')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "✅ Sample user 'admin' added successfully.<br>";
+} else {
+    echo "⚠️ Note: Sample user might already exist.<br>";
+}
+
+$conn->close();
+
+echo "<br>🎓 Setup completed successfully! You can now use your login and signup pages.";
+?>
