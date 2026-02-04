@@ -3,23 +3,23 @@
   <h1>🏛️ University Resource Management Ecosystem</h1>
   
   <p>
-    <strong>A Logic-Driven LMS & Smart Booking System</strong>
+    <strong>A Logic-Driven LMS, Smart Booking & Faculty Management System</strong>
     <br />
     <em>Developed under the mentorship of Sir Ali Bashir</em>
   </p>
 
   <p>
     <a href="#key-features">Key Features</a> •
-    <a href="#smart-booking-logic">The Booking Engine</a> •
-    <a href="#tech-stack">Tech Stack</a> •
+    <a href="#smart-booking-logic">Booking Engine</a> •
+    <a href="#technical-architecture">Architecture</a> •
     <a href="#installation">How to Run</a>
   </p>
 
   <p>
-    <img src="https://img.shields.io/badge/PHP-Core-777BB4?style=for-the-badge&logo=php&logoColor=white" />
-    <img src="https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
-    <img src="https://img.shields.io/badge/Tailwind_CSS-Design-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
-    <img src="https://img.shields.io/badge/FPDF-Library-FF0000?style=for-the-badge&logo=adobe-acrobat-reader&logoColor=white" />
+    <img src="[https://img.shields.io/badge/PHP-Core-777BB4?style=for-the-badge&logo=php&logoColor=white](https://img.shields.io/badge/PHP-Core-777BB4?style=for-the-badge&logo=php&logoColor=white)" />
+    <img src="[https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white](https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql&logoColor=white)" />
+    <img src="[https://img.shields.io/badge/FrontEnd-Tailwind%20%26%20JS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white](https://img.shields.io/badge/FrontEnd-Tailwind%20%26%20JS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)" />
+    <img src="[https://img.shields.io/badge/FPDF-Library-FF0000?style=for-the-badge&logo=adobe-acrobat-reader&logoColor=white](https://img.shields.io/badge/FPDF-Library-FF0000?style=for-the-badge&logo=adobe-acrobat-reader&logoColor=white)" />
   </p>
   
   <br />
@@ -27,16 +27,14 @@
 </div>
 
 > **🚀 Why this project is different?**
-> This isn't just a simple website. It is a connected **Campus Ecosystem** where **Students**, **Faculty**, and **Admins** operate with real permissions, workflows, and strict logic constraints. It moves beyond basic CRUD to handle **Concurrency** and **Role-Based Access Control (RBAC)**.
+> This isn't just a CRUD app. It is a connected **Campus Ecosystem** where **Students**, **Faculty**, and **Admins** operate with real permissions. It moves beyond basic features to handle **Concurrency**, **Database Triggers**, and **Smart Resource Allocation**.
 
 ---
 
-## 🔥 The "Wow" Factor: Smart Room Booking Engine
+## 🔥 The "Wow" Factor: Smart Booking & Logic
 
-This project features a complex **Resource Allocation System** that solves real-world concurrency problems. It handles requests for venues like the *Auditorium, Senate Hall, and Conference Rooms*.
-
-### 1. 📅 Visual Availability Calendar (The Logic)
-Instead of boring lists, Focal Persons see a **Color-Coded Dashboard** to check room status instantly:
+### 1. 📅 Visual Availability Calendar (Booking Engine)
+Solves real-world concurrency for venues like *Auditoriums & Conference Rooms*. Focal Persons use a **Color-Coded Dashboard**:
 
 | Visual Indicator | Status | Logic |
 | :--- | :--- | :--- |
@@ -44,13 +42,16 @@ Instead of boring lists, Focal Persons see a **Color-Coded Dashboard** to check 
 | 🟢 **Green** | **Booked** | Request Approved by Admin (Locked for others) |
 | 🔴 **Red** | **Denied** | Request Rejected (Reason visible in history) |
 
-### 2. 🧠 Conflict Detection & Time Slots
-* **Time Constraints:** Slots are strictly divided from **8:00 AM to 6:00 PM**.
-* **Zero-Conflict Rule:** If a room is pending or booked for "9-10 AM", no other Focal Person can select it. The system automatically disables the selection to prevent double-booking.
+**🧠 Zero-Conflict Rule:** If a room is pending or booked for "9-10 AM", the system automatically disables the selection for others to prevent double-booking.
 
-### 3. 📄 Automated PDF Voucher Generation
-* **Instant Documentation:** Upon request submission, the system uses the **FPDF Library** to auto-generate a downloadable PDF.
-* **Proof of Request:** This PDF serves as a digital voucher containing the *Title, No. of Persons, Time Slot,* and *Department details*.
+### 2. 📄 Automated PDF Voucher Generation
+* **Instant Documentation:** Uses **FPDF Library** to auto-generate downloadable Booking Vouchers.
+* **Proof of Request:** Contains Title, No. of Persons, Time Slot, and Department details.
+
+### 3. 👑 The "Focal Person" Trigger Logic
+Unlike standard systems, this application enforces strict academic rules via **Database Triggers**:
+* **Conflict-Free Assignment:** The system guarantees **only one Focal Person per department**.
+* **Auto-Demotion:** Assigning a new focal person automatically revokes rights from the previous holder instantly.
 
 ---
 
@@ -66,40 +67,34 @@ C --> D[Admin Dashboard]
 D -- Grant Access --> E((🟢 Booking Confirmed))
 D -- Deny Access --> F((🔴 Request Rejected))
 
-🛠️ Key Modules & Features
-🔹 True Role-Based Access Control (RBAC)
-Each user lives in their own secure environment:
-
-👑 Admin: The Controller. Can grant/deny room requests, manage departments, and oversee the entire system.
-
-🎓 Focal Person: The Manager. Can book rooms, post News/Events specific to their department, and generate PDFs.
-
-🎒 Students: The End-User. Accesses academic data, notices, and department updates.
-
-🔹 Advanced Admin Panel
+🛠️ Key Modules & Features (RBAC)
+🛡️ Admin Command Center
 Request Handling: Admins don't just "delete" requests. They Approve or Reject them.
 
 State Retention: Rejected requests remain in the database history with a "Denied" status for transparency.
 
-Single Focal Person Logic: The system uses Database Triggers to ensure only one Focal Person exists per department. Assigning a new one automatically demotes the previous one.
+Faculty Onboarding: Add faculty members with specific privileges (HOD, Lecturer).
 
-💻 Tech Stack
-Backend: Core PHP (Functional Programming)
+🎓 Focal Person Dashboard
+Exclusive Access: Can manage News, Notices, Events, and Notifications.
 
-Database: MySQL (Relational Schema with Complex Queries)
+Resource Booking: Access to the Booking Engine and PDF generation.
 
-Frontend: HTML5, JavaScript, Tailwind CSS
+🎒 Student Portal
+Context-Aware: View department-specific news, faculty lists, and announcements dynamically.
 
-Libraries: FPDF (For PDF Generation)
-
-Server: XAMPP (Apache)
-
+💻 Tech Stack:
+Component,Technology,Description
+Backend,Core PHP (Functional),"Server-side logic, Session Management"
+Database,MySQL (Relational),"Triggers, Complex Queries, Stored Procedures"
+Frontend,"HTML5, Tailwind CSS, JS",Responsive UI and visual components
+Libraries,FPDF,For dynamic PDF generation
+Server,XAMPP,Apache Server
 
 ⚙️ Installation (Localhost)
 Clone the Repo:
+git clone https://github.com/aliza-dev/learning-management-system-php.git
 
-Bash
-git clone [https://github.com/aliza-dev/learning-management-system-php.git](https://github.com/aliza-dev/learning-management-system-php.git)
 Setup Database:
 
 Open phpMyAdmin.
@@ -107,6 +102,8 @@ Open phpMyAdmin.
 Create a database named university_db.
 
 Import the .sql file located in the database/ folder.
+
+Note: Ensure triggers are imported correctly.
 
 Configure:
 
@@ -118,8 +115,6 @@ Place the folder in C:/xampp/htdocs/.
 
 Visit: http://localhost/university
 
-
 <div align="center"> <h3>📬 Contact & Credits</h3> <p>Developed with ❤️ by <strong>Aliza Tariq</strong></p> <p>Special thanks to <strong>Sir Ali Bashir</strong> for pushing us beyond "Submit & Forget" to "Logic & Architecture".</p>
 
-<p> <a href="https://www.google.com/search?q=https://linkedin.com/in/aliza-tariq-dev"> <img src="https://www.google.com/search?q=https://img.shields.io/badge/LinkedIn-Connect-blue%3Fstyle%3Dfor-the-badge%26logo%3Dlinkedin" /> </a> <a href="https://github.com/aliza-dev"> <img src="https://www.google.com/search?q=https://img.shields.io/badge/GitHub-Follow-black%3Fstyle%3Dfor-the-badge%26logo%3Dgithub" /> </a> </p> </div>
-
+<p> <a href="https://linkedin.com/in/aliza-tariq-dev"> <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" /> </a> <a href="https://github.com/aliza-dev"> <img src="https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github" /> </a> </p> </div>
