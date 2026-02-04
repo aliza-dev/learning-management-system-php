@@ -21,9 +21,7 @@
     <img src="[https://img.shields.io/badge/FrontEnd-Tailwind%20%26%20JS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white](https://img.shields.io/badge/FrontEnd-Tailwind%20%26%20JS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)" />
     <img src="[https://img.shields.io/badge/FPDF-Library-FF0000?style=for-the-badge&logo=adobe-acrobat-reader&logoColor=white](https://img.shields.io/badge/FPDF-Library-FF0000?style=for-the-badge&logo=adobe-acrobat-reader&logoColor=white)" />
   </p>
-  
   <br />
-
 </div>
 
 > **🚀 Why this project is different?**
@@ -118,3 +116,4 @@ Visit: http://localhost/university
 <div align="center"> <h3>📬 Contact & Credits</h3> <p>Developed with ❤️ by <strong>Aliza Tariq</strong></p> <p>Special thanks to <strong>Sir Ali Bashir</strong> for pushing us beyond "Submit & Forget" to "Logic & Architecture".</p>
 
 <p> <a href="https://linkedin.com/in/aliza-tariq-dev"> <img src="https://img.shields.io/badge/LinkedIn-Connect-blue?style=for-the-badge&logo=linkedin" /> </a> <a href="https://github.com/aliza-dev"> <img src="https://img.shields.io/badge/GitHub-Follow-black?style=for-the-badge&logo=github" /> </a> </p> </div>
+```
